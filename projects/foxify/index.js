@@ -1,4 +1,3 @@
-const ADDRESSES = require('../helper/coreAssets.json')
 const { stakings } = require('../helper/staking');
 
 // Sonic
@@ -8,12 +7,9 @@ const contracts = [
 ];
 
 module.exports = {
-  methodology: 'Counts the totalSupply of Foxify protocol tokens and totalAssets from Arbitrum contract',
+  methodology: 'Counts the totalSupply of Foxify protocol tokens staked in the protocol',
   sonic: {
-    tvl: () => ({}),
+    tvl: stakings(contracts, '0x261dfa2528dfa19011f10b168c856e02baaf0eb6'),
     staking: stakings(contracts, '0x261dfa2528dfa19011f10b168c856e02baaf0eb6')
-  },
-  arbitrum: {
-    tvl: stakings(['0xe5a4f22fcb8893ba0831babf9a15558b5e83446f'], ADDRESSES.arbitrum.USDC_CIRCLE)
   },
 };
